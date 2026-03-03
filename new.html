@@ -1,0 +1,2678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>VibeVault – Pop-Culture Accessories</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VibeVault – pop-culture accessories for anime, K-pop, retro cartoons & aesthetic icons. Keychains, phone charms, stickers and tote patches." />
+
+  <style>
+    :root {
+      --purple-neon: #7b2ff7;
+      --soft-pink: #ffb6c1;
+      --electric-blue: #00c2ff;
+      --pastel-yellow: #ffe07a;
+      --hot-pink: #ff006e;
+      --lime: #39ff14;
+      --cyan: #00f0ff;
+      --bg: #050510;
+      --bg-card: #111323;
+      --bg-alt: #090b18;
+      --text-main: #fdf7ff;
+      --text-muted: #b6b2c8;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --radius-lg: 20px;
+      --radius-xl: 26px;
+      --transition-fast: 0.2s ease-out;
+      --transition-med: 0.35s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+      background: radial-gradient(circle at top, #1b1030 0, #050510 55%, #000 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+    .app-shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to right,
+        rgba(6, 6, 20, 0.97),
+        rgba(6, 6, 20, 0.6),
+        rgba(6, 6, 20, 0.97)
+      );
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.7rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+    }
+
+    .logo-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: conic-gradient(
+        from 220deg,
+        var(--purple-neon),
+        var(--soft-pink),
+        var(--electric-blue),
+        var(--pastel-yellow),
+        var(--purple-neon)
+      );
+      box-shadow: 0 0 16px rgba(123, 47, 247, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.92rem;
+    }
+
+    .nav-link {
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      position: relative;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all var(--transition-fast);
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      inset-inline: 14%;
+      bottom: 0;
+      height: 2px;
+      border-radius: 99px;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform var(--transition-fast);
+      background: linear-gradient(90deg, var(--soft-pink), var(--electric-blue));
+    }
+
+    .nav-link:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .nav-link.active {
+      color: var(--text-main);
+      background: rgba(123, 47, 247, 0.16);
+      box-shadow: 0 0 18px rgba(123, 47, 247, 0.6);
+    }
+
+    .nav-link.active::after {
+      transform: scaleX(1);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .pill-badge {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(0, 242, 255, 0.13);
+      border: 1px solid rgba(0, 242, 255, 0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+    }
+
+    .cart-btn {
+      position: relative;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.35rem 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+      background: radial-gradient(circle at top, rgba(255, 0, 110, 0.22), rgba(9, 11, 24, 0.95));
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .cart-btn:hover {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
+      border-color: rgba(255, 182, 193, 0.9);
+    }
+
+    .cart-icon {
+      font-size: 1rem;
+    }
+
+    .cart-count {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--lime);
+      color: #02030a;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    /* Cart drawer */
+    .cart-drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      z-index: 45;
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+
+    .cart-drawer-backdrop.open {
+      display: flex;
+    }
+
+    .cart-drawer {
+      width: min(360px, 100%);
+      max-height: 100vh;
+      background: radial-gradient(circle at top, #1a1530, #050510);
+      border-left: 1px solid var(--border-subtle);
+      box-shadow: -18px 0 40px rgba(0, 0, 0, 0.7);
+      padding: 1.2rem 1.1rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      animation: slideInRight var(--transition-med);
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+      }
+      to {
+        transform: translateX(0%);
+      }
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .cart-title {
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .cart-chip {
+      font-size: 0.7rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      background: rgba(0, 194, 255, 0.18);
+    }
+
+    .icon-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1.1rem;
+      padding: 0.2rem;
+      border-radius: 999px;
+      transition: background var(--transition-fast);
+    }
+
+    .icon-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .cart-items {
+      margin-top: 0.4rem;
+      flex: 1;
+      overflow-y: auto;
+      padding-right: 0.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      scrollbar-width: thin;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 0.6rem;
+      background: rgba(11, 12, 28, 0.9);
+      border-radius: 14px;
+      padding: 0.5rem 0.45rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .cart-thumb {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: radial-gradient(circle at top, rgba(123, 47, 247, 0.7), rgba(6, 8, 20, 1));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+    }
+
+    .cart-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      font-size: 0.82rem;
+    }
+
+    .cart-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cart-price {
+      font-weight: 600;
+    }
+
+    .cart-qty-btns {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      padding: 0.05rem 0.35rem;
+      font-size: 0.7rem;
+    }
+
+    .cart-qty-btns button {
+      border: none;
+      background: transparent;
+      color: var(--text-main);
+      cursor: pointer;
+      font-size: 0.8rem;
+      padding: 0.1rem 0.2rem;
+    }
+
+    .cart-footer {
+      border-top: 1px dashed rgba(255, 255, 255, 0.15);
+      padding-top: 0.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.86rem;
+    }
+
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      border: none;
+      outline: none;
+      border-radius: 999px;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(120deg, var(--soft-pink), var(--electric-blue));
+      color: #050510;
+      box-shadow: 0 12px 26px rgba(0, 194, 255, 0.54);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+      width: 100%;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 18px 40px rgba(0, 194, 255, 0.7);
+    }
+
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 0.55rem 1.05rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all var(--transition-fast);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.6);
+      transform: translateY(-1px);
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .page {
+      display: none;
+      animation: fadeInUp 0.5s ease-out;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .page-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 2.5rem;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      gap: 1.6rem;
+      margin-top: 1rem;
+    }
+
+    .hero-main {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .hero-tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      padding: 0.25rem 0.7rem;
+      width: fit-content;
+    }
+
+    .hero-tag-pill {
+      padding: 0.12rem 0.48rem;
+      border-radius: 999px;
+      background: rgba(255, 0, 110, 0.18);
+    }
+
+    .hero-heading {
+      font-size: clamp(2.2rem, 4vw, 3.1rem);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(120deg, var(--soft-pink), var(--electric-blue), var(--pastel-yellow));
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 25px rgba(0, 194, 255, 0.55);
+    }
+
+    .hero-subtext {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.3rem;
+    }
+
+    .hero-pill {
+      font-size: 0.78rem;
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      border: 1px dashed rgba(255, 255, 255, 0.26);
+      background: rgba(8, 10, 24, 0.8);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.8rem;
+    }
+
+    .btn-cta-primary {
+      border: none;
+      border-radius: 999px;
+      padding: 0.7rem 1.2rem;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      background: radial-gradient(circle at top left, var(--hot-pink), var(--purple-neon));
+      color: #fff;
+      box-shadow: 0 18px 40px rgba(255, 0, 110, 0.6);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+    }
+
+    .btn-cta-primary:hover {
+      transform: translateY(-1px) scale(1.02);
+      filter: brightness(1.05);
+      box-shadow: 0 22px 56px rgba(255, 0, 110, 0.8);
+    }
+
+    .btn-cta-secondary {
+      border-radius: 999px;
+      padding: 0.65rem 1.1rem;
+      font-size: 0.9rem;
+      background: rgba(9, 10, 26, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .btn-cta-secondary:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.55);
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.6rem;
+      flex-wrap: wrap;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta-badge {
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(0, 240, 255, 0.14);
+      border: 1px solid rgba(0, 240, 255, 0.6);
+      font-size: 0.72rem;
+    }
+
+    .hero-gallery {
+      position: relative;
+      border-radius: 26px;
+      padding: 1.3rem;
+      background: radial-gradient(circle at top, #26134c, #050510);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      min-height: 260px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.6rem;
+    }
+
+    .hero-card {
+      border-radius: 18px;
+      padding: 0.7rem;
+      background: rgba(8, 9, 26, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      font-size: 0.78rem;
+      animation: floatCard 4s ease-in-out infinite;
+    }
+
+    .hero-card:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    .hero-card:nth-child(3) {
+      animation-delay: 0.8s;
+    }
+
+    .hero-card:nth-child(4) {
+      animation-delay: 1.2s;
+    }
+
+    .hero-card:nth-child(5) {
+      animation-delay: 1.6s;
+    }
+
+    .hero-card:nth-child(6) {
+      animation-delay: 2s;
+    }
+
+    @keyframes floatCard {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    .hero-card-emoji {
+      font-size: 1.8rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .hero-card-title {
+      font-weight: 600;
+    }
+
+    .hero-card-tag {
+      font-size: 0.68rem;
+      opacity: 0.8;
+    }
+
+    .hero-orbit {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .orbit-circle {
+      position: absolute;
+      width: 220%;
+      height: 220%;
+      border-radius: 50%;
+      border: 1px dashed rgba(255, 255, 255, 0.12);
+      inset: -60%;
+      animation: spin 28s linear infinite;
+      opacity: 0.3;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .orbit-pill {
+      position: absolute;
+      top: 12%;
+      right: 8%;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.7rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .orbit-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--lime);
+      box-shadow: 0 0 12px var(--lime);
+    }
+
+    .orbit-fan-pill {
+      position: absolute;
+      bottom: 12%;
+      left: 10%;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: radial-gradient(circle at top, rgba(255, 224, 122, 0.9), rgba(123, 47, 247, 0.9));
+      color: #050510;
+      font-size: 0.7rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Sections generic */
+    .section {
+      margin-top: 2.3rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.1rem;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .section-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+    }
+
+    .section-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Trending collections */
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0.9rem;
+    }
+
+    .collection-card {
+      border-radius: 18px;
+      padding: 0.9rem;
+      background: radial-gradient(circle at top, #241234, #080814);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .collection-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.7);
+      border-color: rgba(255, 255, 255, 0.18);
+      background: radial-gradient(circle at top, rgba(0, 242, 255, 0.35), #080814);
+    }
+
+    .collection-chip {
+      font-size: 0.72rem;
+      padding: 0.1rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      width: fit-content;
+    }
+
+    .collection-emoji {
+      font-size: 1.8rem;
+    }
+
+    .collection-title {
+      font-weight: 600;
+      font-size: 0.96rem;
+    }
+
+    .collection-footer {
+      margin-top: 0.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .btn-explore {
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      padding: 0.3rem 0.7rem;
+      font-size: 0.78rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .btn-explore:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    /* Product cards / Bestsellers + Shop grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 1rem;
+    }
+
+    .product-card {
+      border-radius: 18px;
+      padding: 0.9rem;
+      background: radial-gradient(circle at top, #1b1633, #050510);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      overflow: hidden;
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.6);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .product-tag {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      width: fit-content;
+      margin-bottom: 0.25rem;
+    }
+
+    .product-image {
+      height: 120px;
+      border-radius: 14px;
+      background: radial-gradient(circle at top, rgba(255, 224, 122, 0.85), rgba(123, 47, 247, 0.95));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.1rem;
+      margin-bottom: 0.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 20% 0, rgba(255, 255, 255, 0.7), transparent 60%);
+      opacity: 0.7;
+      mix-blend-mode: screen;
+    }
+
+    .product-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .price {
+      font-weight: 700;
+      color: var(--pastel-yellow);
+    }
+
+    .product-actions {
+      margin-top: 0.4rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.4rem;
+    }
+
+    .btn-add {
+      flex: 1;
+      border-radius: 999px;
+      border: none;
+      padding: 0.45rem 0.65rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(120deg, var(--electric-blue), var(--purple-neon));
+      color: #050510;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      box-shadow: 0 12px 25px rgba(0, 194, 255, 0.4);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+    }
+
+    .btn-add:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 16px 32px rgba(0, 194, 255, 0.7);
+    }
+
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 0.45rem 0.7rem;
+      font-size: 0.78rem;
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      background: transparent;
+      color: var(--text-main);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: all var(--transition-fast);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Why VibeVault */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 0.9rem;
+    }
+
+    .why-card {
+      border-radius: 18px;
+      padding: 0.85rem 0.9rem;
+      background: rgba(8, 9, 26, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      gap: 0.7rem;
+      align-items: flex-start;
+      font-size: 0.86rem;
+    }
+
+    .why-icon {
+      font-size: 1.55rem;
+      flex-shrink: 0;
+    }
+
+    .why-title {
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    /* Newsletter */
+    .newsletter-card {
+      border-radius: 22px;
+      padding: 1.3rem 1.1rem;
+      background: radial-gradient(circle at top left, rgba(255, 182, 193, 0.7), rgba(123, 47, 247, 0.96));
+      color: #02010a;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .newsletter-title {
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .newsletter-sub {
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.3rem;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      min-width: 140px;
+      border-radius: 999px;
+      border: none;
+      padding: 0.55rem 0.8rem;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .newsletter-btn {
+      border-radius: 999px;
+      border: none;
+      padding: 0.55rem 0.9rem;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: #02010a;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .newsletter-btn:hover {
+      background: #050314;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      background: #050610;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.1rem 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .footer-link {
+      cursor: pointer;
+      transition: color var(--transition-fast);
+    }
+
+    .footer-link:hover {
+      color: var(--text-main);
+    }
+
+    /* SHOP PAGE */
+    .filters-bar {
+      border-radius: 18px;
+      padding: 0.7rem 0.9rem;
+      background: rgba(9, 10, 24, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+      align-items: center;
+    }
+
+    .filter-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-right: 0.25rem;
+    }
+
+    .filter-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.2rem 0.35rem;
+      border-radius: 999px;
+      background: rgba(12, 15, 34, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      font-size: 0.78rem;
+    }
+
+    .filter-select {
+      background: transparent;
+      border: none;
+      color: var(--text-main);
+      font-size: 0.78rem;
+      outline: none;
+    }
+
+    .filter-select option {
+      color: #000;
+    }
+
+    .filter-pill {
+      font-size: 0.78rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      border: 1px dashed rgba(255, 255, 255, 0.26);
+      cursor: pointer;
+      background: transparent;
+      transition: all var(--transition-fast);
+    }
+
+    .filter-pill.active,
+    .filter-pill:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-style: solid;
+    }
+
+    .shop-layout {
+      margin-top: 1.3rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1rem;
+    }
+
+    .shop-stats {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.2rem;
+    }
+
+    /* Product modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal {
+      width: min(540px, 100% - 2rem);
+      max-height: 90vh;
+      background: radial-gradient(circle at top, #22123c, #050510);
+      border-radius: 24px;
+      padding: 1.1rem 1.1rem 1.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.85);
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      overflow: hidden;
+      animation: fadeInUp 0.4s ease-out;
+    }
+
+    .modal-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.5fr);
+      gap: 0.8rem;
+    }
+
+    @media (max-width: 640px) {
+      .modal-main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .modal-image {
+      border-radius: 18px;
+      background: radial-gradient(circle at top, rgba(255, 224, 122, 0.9), rgba(0, 194, 255, 0.9));
+      min-height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .modal-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 10% 0, rgba(255, 255, 255, 0.7), transparent 55%);
+      opacity: 0.7;
+      mix-blend-mode: screen;
+    }
+
+    .modal-fandom-tag {
+      position: absolute;
+      top: 0.6rem;
+      left: 0.6rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.66);
+      font-size: 0.72rem;
+    }
+
+    .modal-gallery-dots {
+      position: absolute;
+      bottom: 0.55rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.28rem;
+    }
+
+    .modal-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .modal-dot.active {
+      width: 14px;
+      background: #fff;
+    }
+
+    .modal-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .modal-price {
+      font-weight: 700;
+      color: var(--pastel-yellow);
+      margin: 0.2rem 0;
+    }
+
+    .modal-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .modal-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .badge {
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .modal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      margin-bottom: 0.4rem;
+    }
+
+    .qty-control {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.3rem 0.55rem;
+      font-size: 0.78rem;
+    }
+
+    .qty-control button {
+      border: none;
+      background: transparent;
+      color: var(--text-main);
+      cursor: pointer;
+      font-size: 0.85rem;
+      padding: 0.1rem;
+    }
+
+    .modal-secondary {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px dashed rgba(255, 255, 255, 0.16);
+      padding-top: 0.4rem;
+    }
+
+    .modal-bottom {
+      margin-top: 0.4rem;
+    }
+
+    .modal-bottom-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .modal-reco {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 0.5rem;
+    }
+
+    .reco-card {
+      border-radius: 14px;
+      padding: 0.45rem 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.76rem;
+      background: rgba(9, 10, 24, 0.92);
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .reco-name {
+      font-weight: 500;
+    }
+
+    .reco-price {
+      font-weight: 600;
+      color: var(--pastel-yellow);
+    }
+
+    /* Reviews */
+    .reviews {
+      margin-top: 1.1rem;
+      border-radius: 18px;
+      padding: 0.9rem;
+      background: rgba(9, 10, 24, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.78rem;
+    }
+
+    .reviews-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      gap: 0.4rem;
+    }
+
+    .reviews-list {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .review-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .review-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.4rem;
+    }
+
+    /* ABOUT PAGE */
+    .about-hero {
+      border-radius: 24px;
+      padding: 1.3rem 1.1rem;
+      background: radial-gradient(circle at top left, rgba(0, 242, 255, 0.35), rgba(123, 47, 247, 0.95));
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.75);
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .about-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+    }
+
+    .about-body {
+      font-size: 0.9rem;
+    }
+
+    .about-grid {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .about-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.4rem;
+    }
+
+    .pill {
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 0.7rem;
+    }
+
+    .value-card {
+      border-radius: 16px;
+      padding: 0.75rem 0.8rem;
+      background: rgba(10, 11, 26, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      font-size: 0.84rem;
+    }
+
+    .value-title {
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .story-card {
+      border-radius: 20px;
+      padding: 0.9rem 0.95rem;
+      background: radial-gradient(circle at top, #231335, #050510);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.86rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .avatar-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: radial-gradient(circle at top, var(--soft-pink), var(--purple-neon));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    /* CONTACT PAGE */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 1.1rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .contact-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .contact-card {
+      border-radius: 22px;
+      padding: 1.05rem 1rem;
+      background: radial-gradient(circle at top left, #26143a, #050510);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .contact-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.18rem;
+      font-size: 0.8rem;
+    }
+
+    .form-label {
+      color: var(--text-muted);
+    }
+
+    .input,
+    .textarea {
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: rgba(5, 6, 18, 0.96);
+      color: var(--text-main);
+      font-size: 0.85rem;
+      padding: 0.48rem 0.6rem;
+      outline: none;
+      resize: vertical;
+      min-height: 38px;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .input:focus,
+    .textarea:focus {
+      border-color: var(--electric-blue);
+      box-shadow: 0 0 0 1px rgba(0, 194, 255, 0.55);
+      background: rgba(2, 5, 20, 1);
+    }
+
+    .textarea {
+      min-height: 90px;
+    }
+
+    .social-buttons {
+      margin-top: 0.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .social-btn {
+      border-radius: 999px;
+      padding: 0.35rem 0.7rem;
+      font-size: 0.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      background: rgba(0, 0, 0, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .social-btn:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .faq-card {
+      border-radius: 20px;
+      padding: 0.9rem 0.95rem;
+      background: rgba(8, 9, 24, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      font-size: 0.8rem;
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .faq-item {
+      border-radius: 12px;
+      padding: 0.45rem 0.5rem;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .faq-q {
+      font-weight: 600;
+      margin-bottom: 0.1rem;
+    }
+
+    /* Small screens */
+    @media (min-width: 768px) {
+      .hero {
+        grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.3fr);
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+      .page-inner {
+        padding-inline: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div class="app-shell">
+  <header>
+    <nav class="nav">
+      <div class="logo">
+        <div class="logo-badge">✨</div>
+        <span>VibeVault</span>
+      </div>
+
+      <div class="nav-links">
+        <div class="nav-link active" data-page-target="home">Home</div>
+        <div class="nav-link" data-page-target="shop">Shop</div>
+        <div class="nav-link" data-page-target="about">About</div>
+        <div class="nav-link" data-page-target="contact">Contact</div>
+      </div>
+
+      <div class="nav-right">
+        <div class="pill-badge">new drops live</div>
+        <button class="cart-btn" id="cartToggle">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CART DRAWER -->
+  <div class="cart-drawer-backdrop" id="cartDrawer">
+    <div class="cart-drawer">
+      <div class="cart-header">
+        <div class="cart-title">
+          <span>Cart</span>
+          <span class="cart-chip" id="cartItemsLabel">0 items</span>
+        </div>
+        <button class="icon-btn" id="cartClose">✕</button>
+      </div>
+
+      <div class="cart-items" id="cartItems">
+        <!-- JS inserts cart items -->
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-total-row">
+          <span>Total</span>
+          <span id="cartTotal">₹0</span>
+        </div>
+        <button class="btn-primary" id="checkoutBtn">Checkout Securely</button>
+        <span style="font-size:0.74rem;color:var(--text-muted);">
+          ✨ Secure fan checkout. This is a demo cart — hook it up to your backend / payment provider.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT MODAL -->
+  <div class="modal-backdrop" id="productModalBackdrop">
+    <div class="modal">
+      <div class="cart-header" style="margin-bottom:0.4rem;">
+        <div class="cart-title">
+          <span>Quick view</span>
+          <span class="cart-chip">Product details</span>
+        </div>
+        <button class="icon-btn" id="modalCloseBtn">✕</button>
+      </div>
+
+      <div class="modal-main">
+        <div class="modal-image">
+          <div id="modalEmoji">✨</div>
+          <div class="modal-fandom-tag" id="modalFandom">Anime</div>
+          <div class="modal-gallery-dots">
+            <div class="modal-dot active"></div>
+            <div class="modal-dot"></div>
+            <div class="modal-dot"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="modal-title" id="modalTitle">Product Name</div>
+          <div class="modal-price" id="modalPrice">₹0</div>
+          <div class="modal-desc" id="modalDesc">
+            A cute little description of the product. Add your own copy here to match your vibe.
+          </div>
+
+          <div class="modal-meta-row">
+            <span class="badge" id="modalTag">Keychain</span>
+            <span class="badge">Ships in 3–5 days</span>
+            <span class="badge">Waterproof print</span>
+          </div>
+
+          <div class="modal-actions">
+            <div class="qty-control">
+              <button id="qtyMinus">−</button>
+              <span id="qtyValue">1</span>
+              <button id="qtyPlus">+</button>
+            </div>
+            <button class="btn-add" id="modalAddToCart">
+              <span>🛒 Add to cart</span>
+            </button>
+          </div>
+
+          <div class="modal-secondary">
+            People also liked pairing this with other charms and sticker packs. Mix fandoms, stack aesthetics, build your vibe.
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-bottom">
+        <div class="modal-bottom-title">People also liked</div>
+        <div class="modal-reco">
+          <div class="reco-card">
+            <div class="reco-name">Bubble Tea Sticker</div>
+            <div class="reco-price">₹99</div>
+          </div>
+          <div class="reco-card">
+            <div class="reco-name">K-pop Lightstick Charm</div>
+            <div class="reco-price">₹249</div>
+          </div>
+          <div class="reco-card">
+            <div class="reco-name">Retro Cassette Patch</div>
+            <div class="reco-price">₹199</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reviews">
+        <div class="reviews-header">
+          <div>⭐ 4.9 · Top fandom fav</div>
+          <div style="opacity:0.8;">32 reviews</div>
+        </div>
+        <div class="reviews-list">
+          <div class="review-item">
+            <div class="review-meta">
+              <span>✨ @aesthetic.weeb</span>
+              <span>★★★★★</span>
+            </div>
+            <div>Print quality is insane and colors are so vibrant IRL.</div>
+          </div>
+          <div class="review-item">
+            <div class="review-meta">
+              <span>💜 @kpopbby</span>
+              <span>★★★★★</span>
+            </div>
+            <div>Stuck this on my phone case & water bottle – still perfect after weeks.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HOME PAGE -->
+    <section class="page active" data-page="home">
+      <div class="page-inner">
+        <section class="hero">
+          <div class="hero-main">
+            <div class="hero-tagline">
+              <span class="hero-tag-pill">New</span>
+              <span>Pop-culture drops · 2025</span>
+            </div>
+
+            <h1 class="hero-heading">
+              Wear Your <span class="hero-highlight">Fandom.</span>
+            </h1>
+
+            <p class="hero-subtext">
+              Anime • K-pop • Series • Aesthetic Icons.<br />
+              Keychains, phone charms, stickers & patches designed for your home screen, lock screen & everything in between.
+            </p>
+
+            <div class="hero-pills">
+              <span class="hero-pill">✨ Limited-edition drops</span>
+              <span class="hero-pill">💧 Waterproof stickers</span>
+              <span class="hero-pill">💌 Small creator team</span>
+            </div>
+
+            <div class="hero-actions">
+              <button class="btn-cta-primary" data-page-target="shop">
+                <span>Shop New Drops</span>
+                <span>→</span>
+              </button>
+              <button class="btn-cta-secondary" data-scroll-target="#trending">
+                <span>Trending Collections</span>
+                <span>📌</span>
+              </button>
+            </div>
+
+            <div class="hero-meta">
+              <span class="hero-meta-badge">Made for Gen-Z & pop-culture fans</span>
+              <span>🚚 Pan-India shipping</span>
+              <span>🔒 Secure checkout</span>
+            </div>
+          </div>
+
+          <div class="hero-gallery">
+            <div class="hero-grid">
+              <div class="hero-card">
+                <div class="hero-card-emoji">🍜</div>
+                <div class="hero-card-title">Anime Keychains</div>
+                <div class="hero-card-tag">Ramen dates, neon city vibes.</div>
+              </div>
+              <div class="hero-card">
+                <div class="hero-card-emoji">🎧</div>
+                <div class="hero-card-title">K-pop Phone Charms</div>
+                <div class="hero-card-tag">Bias-line approved sparkle.</div>
+              </div>
+              <div class="hero-card">
+                <div class="hero-card-emoji">📺</div>
+                <div class="hero-card-title">Retro Cartoon Stickers</div>
+                <div class="hero-card-tag">Saturday morning nostalgia.</div>
+              </div>
+              <div class="hero-card">
+                <div class="hero-card-emoji">💿</div>
+                <div class="hero-card-title">Aesthetic Icons</div>
+                <div class="hero-card-tag">Y2K, vaporwave, soft core.</div>
+              </div>
+              <div class="hero-card">
+                <div class="hero-card-emoji">🪩</div>
+                <div class="hero-card-title">Glitter Patches</div>
+                <div class="hero-card-tag">Level up your tote bag.</div>
+              </div>
+              <div class="hero-card">
+                <div class="hero-card-emoji">🌙</div>
+                <div class="hero-card-title">Night-mode Sets</div>
+                <div class="hero-card-tag">Dark mode, but irl.</div>
+              </div>
+            </div>
+
+            <div class="hero-orbit">
+              <div class="orbit-circle"></div>
+              <div class="orbit-pill">
+                <div class="orbit-dot"></div>
+                <span>Text-safe, scratch-safe stickers</span>
+              </div>
+              <div class="orbit-fan-pill">
+                <span>💌</span>
+                <span>10k+ orders from fans like you</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TRENDING COLLECTIONS -->
+        <section class="section" id="trending">
+          <div class="section-header">
+            <div>
+              <div class="section-tag">Trending collections</div>
+              <h2 class="section-title">What the fandom is wearing rn 🔥</h2>
+            </div>
+            <div class="section-sub">
+              Tap a collection to jump into filtered shop view.
+            </div>
+          </div>
+
+          <div class="collection-grid">
+            <div class="collection-card" data-collection="Anime">
+              <div class="collection-chip">Anime</div>
+              <div class="collection-emoji">🍥</div>
+              <div class="collection-title">Main character energy</div>
+              <div class="collection-footer">
+                <span>Keychains · Stickers</span>
+                <button class="btn-explore">
+                  <span>Explore</span><span>→</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="collection-card" data-collection="K-pop">
+              <div class="collection-chip">K-pop</div>
+              <div class="collection-emoji">🎤</div>
+              <div class="collection-title">Bias-line essentials</div>
+              <div class="collection-footer">
+                <span>Phone charms · Packs</span>
+                <button class="btn-explore">
+                  <span>Explore</span><span>→</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="collection-card" data-collection="Retro">
+              <div class="collection-chip">Retro Cartoons</div>
+              <div class="collection-emoji">📼</div>
+              <div class="collection-title">Childhood core unlocked</div>
+              <div class="collection-footer">
+                <span>Stickers · Patches</span>
+                <button class="btn-explore">
+                  <span>Explore</span><span>→</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="collection-card" data-collection="Aesthetic Icons">
+              <div class="collection-chip">Aesthetic Icons</div>
+              <div class="collection-emoji">💗</div>
+              <div class="collection-title">Soft, indie, pinteresty</div>
+              <div class="collection-footer">
+                <span>Mood boards · Sets</span>
+                <button class="btn-explore">
+                  <span>Explore</span><span>→</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- BESTSELLERS -->
+        <section class="section">
+          <div class="section-header">
+            <div>
+              <div class="section-tag">Bestsellers</div>
+              <h2 class="section-title">Fan-favorite picks</h2>
+            </div>
+            <div class="section-sub">
+              Add them to cart or quick-view for details & reviews.
+            </div>
+          </div>
+
+          <div class="product-grid" id="bestsellerGrid">
+            <!-- JS will populate from products list -->
+          </div>
+        </section>
+
+        <!-- WHY VIBEVAULT -->
+        <section class="section">
+          <div class="section-header">
+            <div>
+              <div class="section-tag">Why VibeVault?</div>
+              <h2 class="section-title">Little details we obsess over ✨</h2>
+            </div>
+          </div>
+
+          <div class="why-grid">
+            <div class="why-card">
+              <div class="why-icon">🎨</div>
+              <div>
+                <div class="why-title">High-quality prints</div>
+                <div>HD colors on vinyl & acrylic so your fandom looks crisp in every selfie.</div>
+              </div>
+            </div>
+            <div class="why-card">
+              <div class="why-icon">💧</div>
+              <div>
+                <div class="why-title">Waterproof stickers</div>
+                <div>Phone cases, laptops, bottles – your stickers survive everyday chaos.</div>
+              </div>
+            </div>
+            <div class="why-card">
+              <div class="why-icon">⏳</div>
+              <div>
+                <div class="why-title">Limited-edition drops</div>
+                <div>Once they’re gone, they’re gone. Designed for fans who hate missing out.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- NEWSLETTER -->
+        <section class="section">
+          <div class="newsletter-card">
+            <div>
+              <div class="newsletter-title">Join the fandom circle 💌</div>
+              <div class="newsletter-sub">
+                Get early access to new drops, secret discounts & playlists we vibe to while designing.
+              </div>
+            </div>
+            <form class="newsletter-form" id="newsletterForm">
+              <input type="email" class="newsletter-input" placeholder="your@email.com" required />
+              <button type="submit" class="newsletter-btn">
+                <span>Get early access</span>
+                <span>→</span>
+              </button>
+            </form>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- SHOP PAGE -->
+    <section class="page" data-page="shop">
+      <div class="page-inner">
+        <div class="section-header" style="margin-bottom:0.7rem;">
+          <div>
+            <div class="section-tag">Shop</div>
+            <h2 class="section-title">Browse all fandom drops 🛒</h2>
+          </div>
+          <div class="section-sub">
+            Filter by category, fandom or vibe. Tap a card to quick-view.
+          </div>
+        </div>
+
+        <div class="filters-bar">
+          <div class="filter-group">
+            <span class="filter-label">Category</span>
+            <select class="filter-select" id="filterCategory">
+              <option value="all">All</option>
+              <option value="Keychain">Keychains</option>
+              <option value="Phone Charm">Phone Charms</option>
+              <option value="Sticker">Stickers</option>
+              <option value="Tote Patch">Tote Patches</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <span class="filter-label">Fandom</span>
+            <select class="filter-select" id="filterFandom">
+              <option value="all">All</option>
+              <option value="Anime">Anime</option>
+              <option value="K-pop">K-pop</option>
+              <option value="Series">Series</option>
+              <option value="Retro">Retro</option>
+            </select>
+          </div>
+
+          <button class="filter-pill active" id="filterSortNew">
+            New arrivals
+          </button>
+          <button class="filter-pill" id="filterSortPrice">
+            Price · Low to High
+          </button>
+        </div>
+
+        <div class="shop-layout">
+          <div>
+            <div class="shop-stats">
+              <span id="shopCount">0 items</span>
+              <span>Tip: Long-press on mobile for quick-view.</span>
+            </div>
+            <div class="product-grid" id="shopGrid">
+              <!-- JS renders all products -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT PAGE -->
+    <section class="page" data-page="about">
+      <div class="page-inner">
+        <section class="about-hero">
+          <div class="section-tag">About VibeVault</div>
+          <div class="about-title">Where fandom meets style.</div>
+          <p class="about-body">
+            VibeVault is a tiny corner of the internet where keychains, phone charms, stickers and tote patches
+            are treated like love letters to your favorite characters, shows and artists.
+          </p>
+          <div class="pill-list">
+            <span class="pill">🎨 Pop-culture obsessed designers</span>
+            <span class="pill">💌 Fan-first drops</span>
+            <span class="pill">🌈 Gen-Z aesthetic</span>
+          </div>
+        </section>
+
+        <div class="about-grid">
+          <div>
+            <section class="section" style="margin-top:1.3rem;">
+              <div class="section-header">
+                <div>
+                  <div class="section-tag">Why we exist</div>
+                  <h2 class="section-title">Because fans deserve cute merch.</h2>
+                </div>
+              </div>
+              <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:0.6rem;">
+                We were tired of boring, overpriced merch that didn’t match the way we actually dress, scroll,
+                or spam our friends with screenshots. So we started making pieces we wished existed:
+              </p>
+              <ul style="font-size:0.88rem;color:var(--text-muted);display:grid;gap:0.25rem;padding-left:1rem;">
+                <li>Affordable, iconic, aesthetic accessories that feel like part of your outfit.</li>
+                <li>Drops inspired by trending shows, anime arcs, comebacks & meme culture.</li>
+                <li>Designs that look good both IRL and in mirror selfies.</li>
+              </ul>
+            </section>
+
+            <section class="section">
+              <div class="section-header">
+                <div>
+                  <div class="section-tag">Values</div>
+                  <h2 class="section-title">Stuff we care about 💗</h2>
+                </div>
+              </div>
+
+              <div class="values-grid">
+                <div class="value-card">
+                  <div class="value-title">
+                    <span>👥</span><span>Community</span>
+                  </div>
+                  <div>We listen to DMs, polls & chaos in the comments before launching drops.</div>
+                </div>
+                <div class="value-card">
+                  <div class="value-title">
+                    <span>✨</span><span>Creativity</span>
+                  </div>
+                  <div>Every design starts as a messy moodboard of screenshots, playlists & Pinterest saves.</div>
+                </div>
+                <div class="value-card">
+                  <div class="value-title">
+                    <span>🧵</span><span>Quality</span>
+                  </div>
+                  <div>Thick vinyl, vibrant inks, sturdy chains – cute but durable enough for everyday chaos.</div>
+                </div>
+                <div class="value-card">
+                  <div class="value-title">
+                    <span>💌</span><span>Fanlove</span>
+                  </div>
+                  <div>We’re fans first, shop second. If we wouldn’t wear it, we don’t drop it.</div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div>
+            <section class="section" style="margin-top:1.3rem;">
+              <div class="section-header">
+                <div>
+                  <div class="section-tag">Tiny team energy</div>
+                  <h2 class="section-title">A tiny team of fans.</h2>
+                </div>
+              </div>
+              <div class="story-card">
+                <div class="avatar-row">
+                  <div class="avatar">🎀</div>
+                  <div>
+                    <div style="font-weight:600;">The VibeVault crew</div>
+                    <div style="font-size:0.78rem;color:var(--text-muted);">
+                      Designers · Pack order nerds · Social meme posters
+                    </div>
+                  </div>
+                </div>
+                <p>
+                  We’re a small creator-run studio that started by printing stickers on a bedroom desk and
+                  packing orders on the floor. Every charm, sticker and patch is something we genuinely
+                  wanted to wear on our own bags, phones and laptops.
+                </p>
+                <p>
+                  Today, we still hand-check each batch, obsess over color accuracy and scream in the DMs
+                  when you tag us in your photos. That’s the entire business plan, tbh.
+                </p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT PAGE -->
+    <section class="page" data-page="contact">
+      <div class="page-inner">
+        <div class="section-header" style="margin-bottom:0.75rem;">
+          <div>
+            <div class="section-tag">Contact</div>
+            <h2 class="section-title">Got a collab idea or order question? Hit us up! 💬</h2>
+          </div>
+          <div class="section-sub">
+            Use the form or slide into our socials – we reply faster than your crush.
+          </div>
+        </div>
+
+        <div class="contact-layout">
+          <div class="contact-card">
+            <p class="contact-text">
+              For custom bulk orders, creator collabs or questions about your package, just drop a message.
+            </p>
+            <form class="form-grid" id="contactForm">
+              <div class="form-field">
+                <label class="form-label">Name</label>
+                <input class="input" type="text" name="name" placeholder="Your name" required />
+              </div>
+              <div class="form-field">
+                <label class="form-label">Email</label>
+                <input class="input" type="email" name="email" placeholder="you@example.com" required />
+              </div>
+              <div class="form-field">
+                <label class="form-label">Message</label>
+                <textarea class="textarea" name="message" placeholder="Tell us what you need ✨" required></textarea>
+              </div>
+              <button type="submit" class="btn-primary">
+                Send message
+              </button>
+            </form>
+
+            <div class="social-buttons">
+              <button class="social-btn">
+                <span>📸</span><span>Instagram</span>
+              </button>
+              <button class="social-btn">
+                <span>🎵</span><span>TikTok</span>
+              </button>
+              <button class="social-btn">
+                <span>💬</span><span>WhatsApp</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <div class="section-tag" style="margin-bottom:0.4rem;">FAQs</div>
+
+            <div class="faq-item">
+              <div class="faq-q">How long does shipping take?</div>
+              <div class="faq-a">
+                Orders typically ship in 2–4 business days. Delivery is usually within 4–8 days depending on your city.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">Are stickers waterproof?</div>
+              <div class="faq-a">
+                Yes! Our vinyl stickers are waterproof & fade-resistant. Perfect for bottles, laptops & cases.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">Do you accept returns?</div>
+              <div class="faq-a">
+                If your item arrives damaged or misprinted, email us within 7 days with photos and we’ll fix it.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">Do you do creator / brand collabs?</div>
+              <div class="faq-a">
+                Absolutely. Use the form and add "Collab" in your subject – we’ll get back with ideas & mockups.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© 2025 VibeVault. Built with fandom & caffeine.</div>
+      <div class="footer-links">
+        <span class="footer-link" data-page-target="shop">Shop</span>
+        <span class="footer-link" data-page-target="about">About</span>
+        <span class="footer-link" data-page-target="contact">Contact</span>
+        <span>•</span>
+        <span class="footer-link">Instagram</span>
+        <span class="footer-link">TikTok</span>
+        <span class="footer-link">Email</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // ------------ DATA ------------
+  const products = [
+    {
+      id: "p1",
+      name: "Neon City Ramen Keychain",
+      category: "Keychain",
+      emoji: "🍜",
+      fandom: "Anime",
+      fandomTag: "Anime",
+      price: 299,
+      badge: "Anime",
+      isNew: true
+    },
+    {
+      id: "p2",
+      name: "Stargirl K-pop Phone Charm",
+      category: "Phone Charm",
+      emoji: "💫",
+      fandom: "K-pop",
+      fandomTag: "K-pop",
+      price: 349,
+      badge: "K-pop",
+      isNew: true
+    },
+    {
+      id: "p3",
+      name: "Retro TV Sticker Pack",
+      category: "Sticker",
+      emoji: "📺",
+      fandom: "Retro",
+      fandomTag: "Retro",
+      price: 199,
+      badge: "Retro Cartoons",
+      isNew: false
+    },
+    {
+      id: "p4",
+      name: "Cloud Aesthetic Icon Sheet",
+      category: "Sticker",
+      emoji: "☁️",
+      fandom: "Series",
+      fandomTag: "Series",
+      price: 149,
+      badge: "Aesthetic Icons",
+      isNew: true
+    },
+    {
+      id: "p5",
+      name: "Bubble Tea Bestie Sticker",
+      category: "Sticker",
+      emoji: "🧋",
+      fandom: "Anime",
+      fandomTag: "Anime",
+      price: 99,
+      badge: "Cute",
+      isNew: false
+    },
+    {
+      id: "p6",
+      name: "Pastel Pixel Heart Patch",
+      category: "Tote Patch",
+      emoji: "💗",
+      fandom: "Retro",
+      fandomTag: "Retro",
+      price: 249,
+      badge: "Aesthetic Icons",
+      isNew: false
+    },
+    {
+      id: "p7",
+      name: "Arcade Night Keychain",
+      category: "Keychain",
+      emoji: "🎮",
+      fandom: "Retro",
+      fandomTag: "Retro",
+      price: 329,
+      badge: "Retro Cartoons",
+      isNew: true
+    },
+    {
+      id: "p8",
+      name: "Main Character Energy Charm",
+      category: "Phone Charm",
+      emoji: "🌙",
+      fandom: "Anime",
+      fandomTag: "Anime",
+      price: 379,
+      badge: "Anime",
+      isNew: false
+    }
+  ];
+
+  // ------------ STATE ------------
+  let activePage = "home";
+  let cart = [];
+  let sortMode = "new"; // "new" or "price"
+  let modalProduct = null;
+  let modalQty = 1;
+
+  // ------------ PAGE SWITCHING ------------
+  const pages = document.querySelectorAll(".page");
+  const navLinks = document.querySelectorAll("[data-page-target]");
+  const footerLinks = document.querySelectorAll("footer [data-page-target]");
+  const heroCtas = document.querySelectorAll(".btn-cta-primary[data-page-target]");
+  const collectionCards = document.querySelectorAll(".collection-card");
+
+  function setActivePage(pageName) {
+    activePage = pageName;
+    pages.forEach(p => {
+      p.classList.toggle("active", p.dataset.page === pageName);
+    });
+    document.querySelectorAll(".nav-link").forEach(link => {
+      link.classList.toggle("active", link.dataset.pageTarget === pageName);
+    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (pageName === "shop") {
+      renderShop();
+    }
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => setActivePage(link.dataset.pageTarget));
+  });
+  footerLinks.forEach(link => {
+    link.addEventListener("click", () => setActivePage(link.dataset.pageTarget));
+  });
+  heroCtas.forEach(link => {
+    link.addEventListener("click", () => setActivePage(link.dataset.pageTarget));
+  });
+
+  document.querySelectorAll("[data-scroll-target]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const target = document.querySelector(btn.dataset.scrollTarget);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  });
+
+  // Clicking trending collection -> open shop filtered by fandom
+  const filterFandomSelect = document.getElementById("filterFandom");
+  collectionCards.forEach(card => {
+    card.addEventListener("click", () => {
+      const fandom = card.dataset.collection;
+      setActivePage("shop");
+      // Try to map "Aesthetic Icons" to a fandom filter that exists -> Series/Retro; we pick "Series"
+      if (fandom === "Aesthetic Icons") {
+        filterFandomSelect.value = "Series";
+      } else {
+        filterFandomSelect.value = fandom;
+      }
+      renderShop();
+    });
+  });
+
+  // ------------ HOME: BESTSELLERS ------------
+  const bestsellerGrid = document.getElementById("bestsellerGrid");
+
+  function renderBestsellers() {
+    const six = products.slice(0, 6);
+    bestsellerGrid.innerHTML = "";
+    six.forEach(p => {
+      const card = createProductCard(p);
+      bestsellerGrid.appendChild(card);
+    });
+  }
+
+  // ------------ SHOP ------------
+  const shopGrid = document.getElementById("shopGrid");
+  const shopCount = document.getElementById("shopCount");
+  const filterCategory = document.getElementById("filterCategory");
+  const filterSortNew = document.getElementById("filterSortNew");
+  const filterSortPrice = document.getElementById("filterSortPrice");
+
+  filterCategory.addEventListener("change", renderShop);
+  filterFandomSelect.addEventListener("change", renderShop);
+
+  filterSortNew.addEventListener("click", () => {
+    sortMode = "new";
+    filterSortNew.classList.add("active");
+    filterSortPrice.classList.remove("active");
+    renderShop();
+  });
+
+  filterSortPrice.addEventListener("click", () => {
+    sortMode = "price";
+    filterSortPrice.classList.add("active");
+    filterSortNew.classList.remove("active");
+    renderShop();
+  });
+
+  function renderShop() {
+    const cat = filterCategory.value;
+    const fandom = filterFandomSelect.value;
+    let list = [...products];
+    if (cat !== "all") list = list.filter(p => p.category === cat);
+    if (fandom !== "all") list = list.filter(p => p.fandom === fandom);
+    if (sortMode === "price") {
+      list.sort((a, b) => a.price - b.price);
+    } else {
+      list.sort((a, b) => Number(b.isNew) - Number(a.isNew));
+    }
+    shopGrid.innerHTML = "";
+    list.forEach(p => shopGrid.appendChild(createProductCard(p)));
+    shopCount.textContent = `${list.length} item${list.length !== 1 ? "s" : ""}`;
+  }
+
+  // ------------ PRODUCT CARD FACTORY ------------
+  function createProductCard(p) {
+    const card = document.createElement("article");
+    card.className = "product-card";
+    card.dataset.productId = p.id;
+
+    card.innerHTML = `
+      <div class="product-tag">${p.badge}</div>
+      <div class="product-image">
+        <span>${p.emoji}</span>
+      </div>
+      <div class="product-name">${p.name}</div>
+      <div class="product-meta">
+        <span>${p.fandom}</span>
+        <span class="price">₹${p.price}</span>
+      </div>
+      <div class="product-actions">
+        <button class="btn-add">
+          <span>🛒 Add</span>
+        </button>
+        <button class="btn-ghost">
+          <span>Quick view</span>
+        </button>
+      </div>
+    `;
+
+    const addBtn = card.querySelector(".btn-add");
+    const quickBtn = card.querySelector(".btn-ghost");
+
+    addBtn.addEventListener("click", e => {
+      e.stopPropagation();
+      addToCart(p, 1);
+    });
+
+    quickBtn.addEventListener("click", e => {
+      e.stopPropagation();
+      openProductModal(p);
+    });
+
+    // Whole card quick view on click
+    card.addEventListener("click", e => {
+      if (!e.target.closest("button")) {
+        openProductModal(p);
+      }
+    });
+
+    return card;
+  }
+
+  // ------------ CART ------------
+  const cartToggle = document.getElementById("cartToggle");
+  const cartDrawer = document.getElementById("cartDrawer");
+  const cartClose = document.getElementById("cartClose");
+  const cartItemsContainer = document.getElementById("cartItems");
+  const cartCount = document.getElementById("cartCount");
+  const cartItemsLabel = document.getElementById("cartItemsLabel");
+  const cartTotal = document.getElementById("cartTotal");
+  const checkoutBtn = document.getElementById("checkoutBtn");
+
+  cartToggle.addEventListener("click", () => {
+    cartDrawer.classList.add("open");
+  });
+
+  cartClose.addEventListener("click", () => {
+    cartDrawer.classList.remove("open");
+  });
+
+  cartDrawer.addEventListener("click", e => {
+    if (e.target === cartDrawer) cartDrawer.classList.remove("open");
+  });
+
+  checkoutBtn.addEventListener("click", () => {
+    if (cart.length === 0) {
+      alert("Your cart is empty. Add some fandom goodies first ✨");
+      return;
+    }
+    alert("Demo checkout only. Connect this button to your payment gateway / backend. 💳");
+  });
+
+  function addToCart(product, qty = 1) {
+    const existing = cart.find(item => item.id === product.id);
+    if (existing) {
+      existing.qty += qty;
+    } else {
+      cart.push({ ...product, qty });
+    }
+    updateCartUI();
+    // Small feedback
+    cartToggle.classList.add("cart-pulse");
+    setTimeout(() => cartToggle.classList.remove("cart-pulse"), 350);
+  }
+
+  function updateCartUI() {
+    const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+    const totalPrice = cart.reduce((sum, item) => sum + item.qty * item.price, 0);
+
+    cartCount.textContent = totalItems;
+    cartItemsLabel.textContent = `${totalItems} item${totalItems !== 1 ? "s" : ""}`;
+    cartTotal.textContent = `₹${totalPrice}`;
+
+    cartItemsContainer.innerHTML = "";
+    if (cart.length === 0) {
+      cartItemsContainer.innerHTML = `<div style="font-size:0.82rem;color:var(--text-muted);">
+        Your cart is empty. Start with a keychain or sticker pack you’d actually use daily. ✨
+      </div>`;
+      return;
+    }
+
+    cart.forEach(item => {
+      const row = document.createElement("div");
+      row.className = "cart-item";
+      row.innerHTML = `
+        <div class="cart-thumb">${item.emoji}</div>
+        <div class="cart-info">
+          <div class="cart-row">
+            <span>${item.name}</span>
+            <button class="icon-btn" data-remove="true">✕</button>
+          </div>
+          <div class="cart-row" style="font-size:0.78rem;color:var(--text-muted);">
+            <span>${item.fandom} · ${item.category}</span>
+            <span class="cart-price">₹${item.price * item.qty}</span>
+          </div>
+          <div class="cart-row">
+            <div class="cart-qty-btns">
+              <button data-action="minus">−</button>
+              <span>${item.qty}</span>
+              <button data-action="plus">+</button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      const qtyBtns = row.querySelector(".cart-qty-btns");
+      qtyBtns.querySelector("[data-action='minus']").addEventListener("click", () => {
+        item.qty--;
+        if (item.qty <= 0) {
+          cart = cart.filter(c => c.id !== item.id);
+        }
+        updateCartUI();
+      });
+      qtyBtns.querySelector("[data-action='plus']").addEventListener("click", () => {
+        item.qty++;
+        updateCartUI();
+      });
+      row.querySelector("[data-remove]").addEventListener("click", () => {
+        cart = cart.filter(c => c.id !== item.id);
+        updateCartUI();
+      });
+
+      cartItemsContainer.appendChild(row);
+    });
+  }
+
+  // ------------ PRODUCT MODAL ------------
+  const productModalBackdrop = document.getElementById("productModalBackdrop");
+  const modalCloseBtn = document.getElementById("modalCloseBtn");
+  const modalEmoji = document.getElementById("modalEmoji");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalPrice = document.getElementById("modalPrice");
+  const modalDesc = document.getElementById("modalDesc");
+  const modalFandom = document.getElementById("modalFandom");
+  const modalTag = document.getElementById("modalTag");
+  const modalAddToCart = document.getElementById("modalAddToCart");
+  const qtyMinus = document.getElementById("qtyMinus");
+  const qtyPlus = document.getElementById("qtyPlus");
+  const qtyValue = document.getElementById("qtyValue");
+
+  function openProductModal(product) {
+    modalProduct = product;
+    modalQty = 1;
+    qtyValue.textContent = "1";
+
+    modalEmoji.textContent = product.emoji;
+    modalTitle.textContent = product.name;
+    modalPrice.textContent = `₹${product.price}`;
+    modalFandom.textContent = product.fandomTag || product.fandom;
+    modalTag.textContent = product.category;
+
+    modalDesc.textContent =
+      "Designed for daily use — thick, vibrant and ready for your phone, tote or bottle. Add your brand copy here to talk about finishes, sizes & vibes.";
+
+    productModalBackdrop.classList.add("open");
+  }
+
+  function closeProductModal() {
+    productModalBackdrop.classList.remove("open");
+  }
+
+  modalCloseBtn.addEventListener("click", closeProductModal);
+  productModalBackdrop.addEventListener("click", e => {
+    if (e.target === productModalBackdrop) closeProductModal();
+  });
+
+  qtyMinus.addEventListener("click", () => {
+    modalQty = Math.max(1, modalQty - 1);
+    qtyValue.textContent = modalQty;
+  });
+  qtyPlus.addEventListener("click", () => {
+    modalQty++;
+    qtyValue.textContent = modalQty;
+  });
+
+  modalAddToCart.addEventListener("click", () => {
+    if (!modalProduct) return;
+    addToCart(modalProduct, modalQty);
+    closeProductModal();
+    cartDrawer.classList.add("open");
+  });
+
+  // ------------ FORMS ------------
+  const newsletterForm = document.getElementById("newsletterForm");
+  newsletterForm.addEventListener("submit", e => {
+    e.preventDefault();
+    alert("Subscribed! Hook this up to your email service (Mailchimp, Brevo, etc.) in production. 💌");
+    newsletterForm.reset();
+  });
+
+  const contactForm = document.getElementById("contactForm");
+  contactForm.addEventListener("submit", e => {
+    e.preventDefault();
+    alert("Message sent! Connect this form to your backend / Google Sheet / email in production. 💬");
+    contactForm.reset();
+  });
+
+  // ------------ INITIAL RENDER ------------
+  renderBestsellers();
+  renderShop();
+  updateCartUI();
+</script>
+</body>
+</html>
